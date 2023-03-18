@@ -46,10 +46,6 @@
         "type_traits": "cpp",
         "memory": "cpp"
     },
-	 "editor.autoClosingBrackets": "never",
-	 "editor.autoClosingOvertype": "never",
-	 "editor.autoClosingQuotes": "never",
-	 "editor.autoClosingDelete": "never",
 	   "editor.tabCompletion": "on",
 	 "editor.acceptSuggestionOnEnter": "off",
 	 "editor.hover.enabled": false,
