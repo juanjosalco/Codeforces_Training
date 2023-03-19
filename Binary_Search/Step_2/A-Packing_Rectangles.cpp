@@ -21,7 +21,7 @@ typedef vector<lli> vi;
 #define print(s) cout << s << endl
 #define fore(i, a, b) for(lli i = (a), TT = (b); i < TT; ++i)
 #define _ ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
- 
+
 template <typename T> static constexpr T inf = numeric_limits<T>::max() / 2;
  
 ///-------------------------------------------------------------------------
@@ -36,44 +36,31 @@ lli mcm(lli a, lli b) {return (!a || !b) ? 0 : a * b / mcd(a, b);}
 
 //g++-12 -std=c++17 main.cpp && ./a.out < input.txt > output.txt
 
+lli n, w, h;
+
+bool good(lli x){
+    return (x / w) * (x / h) >= n;
+}
+
 int main() { _
     
     //freopen("input.txt", "r", stdin);
     //freopen("output.txt", "w", stdout);
-    int n, k;
-    cin >> n;
-    vector<int> a(n);
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
-    }
-    sort(a.begin(), a.end());
-    cin >> k;
-    for(int i = 0; i < k; i++){
-        int leftBoundary, rightBoundary;
-        cin >> leftBoundary >> rightBoundary;
-        int l = -1;
-        int r = n; 
-        while(r > l + 1){
-            int m = (l + r) / 2;
-            if(a[m] < leftBoundary){
-                l = m;
-            } else{
-                r = m;
-            }
-        }
-        int left = r + 1;
-        l = -1;
-        r = n;
-        while(r > l + 1){
-            int m = (l + r) / 2;
-            if(a[m] <= rightBoundary){
-                l = m;
-            } else{
-                r = m;
-            }
-        }
-        int right = l + 1;
 
-        cout << (right - left + 1) << " ";
+    cin >> w >> h >> n;
+    lli l = 0;
+    lli r = 1;
+    while(!good(r)){
+        r *= 2;
     }
+
+    while(r > l + 1){
+        lli m = (l + r) / 2;
+        if(good(m)){
+            r = m;
+        } else{
+            l = m;
+        }
+    }
+    cout << r;
 }
